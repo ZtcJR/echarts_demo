@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>散点图</title>
+    <script src="./Js/echarts.min.js"></script>
+</head>
+<body>
+    <div id ="main" style ="width:600px;height:400px;"></div>
+</body>
+<script >
+var myChart = echarts.init(document.getElementById("main"))
+option={
+    title:{
+        text:"男女生身高体重分布",
+        left:"center",
+    },
+    legend:{
+        data:["男生","女生"],
+        origin:"vertical",
+        left:"left"
+    },
+    tooltip:{
+        trigger:"axis",
+        showDelay:0,//代表的是我将鼠标放到图表的上面提示会有延迟，当我不想有延迟就把它设置为0；
+        axisPointer:{
+            //代表的是x轴的鼠标移上去，会有提示
+            type:"cross",//代表的是，我们的横坐标和纵坐标都会有提示
+            lineStyle:{
+                // 代表的是我的提示线的类型是实线，宽度为3
+                type:"solid",
+                widt:3
+            }
+        },
+        // 定制提示的内容,当我鼠标定位上去的时候会出现响应的内容，比如：女生身高体重等信息
+        formatter:function(params){
+            if(params[0].value){
+                return params[0].seriesName + ':<br/>'
+                + params[0].value[0]+'cm'
+                + params[0].value[1]+'kg'
+            }
+        }
+    },
+    toolbox:{
+        show:true,
+        feature:{
+            mark:{
+                show:true
+            },
+            dataZoom:{
+                show:true
+            },
+            dataView:{
+                show:true,
+                readOnly:true
+            },
+            restore:{
+                show:true
+            }
+
+        },
+        saveAsImage:{
+            show:false
+        }
+
+    },
+    xAxis:[
+        {
+            type:"value",
+            precision:2,//文本的精准度
+            scale:true,
+            name:'身高(cm)'
+        }
+    ],
+    yAxis:[
+        {
+            type:"value",
+            precision:2,
+            scale:true,
+            name:"体重(kg)"
+        }
+    ],
+    series:[
+        {
+            name:"女生",
+            type:"scatter",//散点
+            data:[[165,50],[168,65],[155,43],[180,60],[167,56],[165,55]]
+        },
+        {
+            name:"男生",
+            type:"scatter",//散点
+            data:[[170,50],[175,70],[190,65],[180,60],[167,50],[176,58]]
+        }
+    ]
+
+
+}
+myChart.setOption(option)
+
+</script>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>雷达图</title>
+    <script src="./Js/echarts.min.js"></script>
+</head>
+<body>
+    <div id= "main" style ="width:600px;height:400px"></div>
+</body>
+<script>
+var myChart = echarts.init(document.getElementById("main"))
+option={
+    title:{
+        text:"雷达图",
+        left:"left",
+        subtext:"预算与支出"
+    },
+    legend:{
+        data:['预算分配（Allocated Budget）', '实际开销（Actual Spending）'],
+        origint:"vertical",
+        left:"left",
+        top:"bottom"
+    },
+    tooltip:{
+        trigger:"item"
+
+    },
+    // 代表的是极坐标
+    polar:[
+        {
+            indicator:[
+                {
+                    text:"生活用品",
+                    max:1500,
+                    min:0
+                },
+                {
+                    text:"社交",
+                    max:2000,
+                    min:0
+                },
+                {
+                    text:"学费",
+                    max:10000,
+                    min:0
+                },
+                {
+                    text:"娱乐",
+                    max:500,
+                    min:0
+                },
+                {
+                    text:"衣服",
+                    max:300,
+                    min:0
+                }
+            ]
+        }
+    ],
+  
+    series:[
+        {
+            name:"",
+            type:"radar",
+            data:[
+                {
+                    value:[2000,1000,15000,300,800],
+                    name:"预算分配"
+                },
+                {
+                    value:[1500,2000,11000,300,200],
+                    name:"实际开销"
+                },
+               
+            ]
+        }
+        
+    ]
+
+
+}
+
+myChart.setOption(option)
+
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>漏斗图</title>
+    <script src="Js//echarts.min.js"></script>
+</head>
+<body>
+    <div id ="main" style ="width:600px;height:400px"></div>
+</body>
+<script >
+var myChart = echarts.init(document.getElementById("main"))
+option = {
+    title: {
+        text: '漏斗图',
+        subtext: '纯属虚构'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c}%"
+    },
+    toolbox: {
+        feature: {
+            dataView: {readOnly: false},
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    legend: {
+        data: ['衣服','外卖','包包','玩乐','零食']
+    },
+
+    series: [
+        {
+            name:'漏斗图',
+            type:'funnel',
+            left: '10%',
+            top: 60,
+            bottom: 60,
+            width: '80%',
+            min: 0,
+            max: 100,
+            minSize: '0%',
+            maxSize: '100%',
+            // sort: 'descending',
+            gap: 2,
+            label: {
+                show: true,
+                // position: 'inside'
+            },
+            labelLine: {
+                show:false,
+                length: 10,
+                lineStyle: {
+                    width: 1,
+                    type: 'solid'
+                }
+            },
+            // 每一块的内容的样式
+            itemStyle: {
+
+                borderColor: '#fff',
+                borderWidth: 1
+            },
+            emphasis: {
+                label: {
+                    fontSize: 20
+                }
+            },
+            // 数据
+            data: [
+                {value: 60, name: '衣服'},
+                {value: 40, name: '外卖'},
+                {value: 20, name: '包包'},
+                {value: 80, name: '玩乐'},
+                {value: 100, name: '零食'}
+            ]
+        }
+    ]
+};
+
+myChart.setOption(option)
+
+</script>
+</html>

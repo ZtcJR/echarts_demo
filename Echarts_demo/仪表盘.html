@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仪表盘</title>
+    <script src="Js/echarts.min.js"></script>
+</head>
+<body>
+    <div id ="main" style="width:600px;height:400px;"></div>
+</body>
+<script>
+var myChart = echarts.init(document.getElementById("main"))
+option={
+    title:{
+        text:"行车耗油",
+        left:"center"
+    },
+    tooltip:{
+        formatter:'{a}<br/>{b}:{c}%'
+    },
+    toolbox:{
+        feature:{
+            restore:{
+                show:true
+            },
+            saveAsImage:{
+                show:true,
+            }
+        }
+    },
+    series:[
+        {
+            name:"",
+            type:"gauge",
+            detail:{
+                // 这个是将消耗的量进行从新格式化输出加上%号
+                formatter:'{value}%',
+
+            },
+            data:[
+                {
+                    value:30,
+                    name:"消耗率"
+                }
+            ]
+        }
+    ]
+
+}
+myChart.setOption(option)
+</script>
+</html>

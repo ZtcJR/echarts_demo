@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>折线图</title>
+    <script src="./Js/echarts.min.js"></script>
+</head>
+
+<body>
+    <div id="main" style="width:600px;height:400px;"></div>
+</body>
+<script>
+    // 获取到main这个节点
+    var myChart = echarts.init(document.getElementById("main"))
+    // 设置配置项
+    option = {
+        title: {
+            text: "收入支出折线图",
+            left:"right",
+            subtext:"模拟收支",
+            // 代表的是标题的字体颜色的设置
+            textStyle:{
+                color:"red"
+            }
+        },
+        legend: {
+            data: ["收入", "支出"]
+        },
+        tooltip:{
+            trigger:"item"
+        },
+        // 数据区域缩放
+        dataZoom:{
+            show:true,//true表示显示数据区域缩放
+            realtime:true,//缩放变化是否实时显示，联动
+            start:20,//x轴距离左边的距离
+            end:80,//x轴距离右边的距离
+            title:{
+                dataZoom:"区域缩放",
+                dataZoomReset:"区域缩放-后退"
+            }
+        },
+        xAxis: [{
+            type: "category",
+            data: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+        }],
+        yAxis: [{
+            type: "value"
+        }],
+        series: [{
+                name: "收入",
+                type: "line",
+                data: [0, 0, 0, 1000, 2000, 3000, 4000, 5000, 1000, 800,"..."]
+
+            },
+            {
+                name: "支出",
+                type: "line",
+                data: [2000, 3000, 4000, 5000, 6000,1500,2440,899,1000,"..."]
+            }
+        ]
+
+    }
+    myChart.setOption(option)
+</script>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>环形图</title>
+    <script src="./Js/echarts.min.js"></script>
+</head>
+<body>
+    <div id ="main" style ="width:600px;height:400px;"></div>
+</body>
+<script>
+var myChart = echarts.init(document.getElementById("main"))
+option ={
+    title:{
+        text:"环形图",
+        left:"center"
+    },
+    legend:{
+        data:["企业","大楼","电子商务","物流速递","饭店","美容店"],
+        orient:"vertical",
+        left:"right"
+    },
+    tooltip: {
+        trigger: 'item',
+        // formatter: '{a} <br/>{b}: {c} ({d}%)'
+    },
+    series:[
+        {
+            type:"pie",
+            radius:["50%","80%"],
+            label:{
+                // false是在每个圆的部分不显示字
+                show:true,
+                position:"inner",
+            },
+            // 代表的是每个圆的部分的设置
+            emphasis:{
+                label:{
+                    // position:"inner",
+                    show:true,
+                    fontSize:"20",
+                    fontWeight:"bold",
+                }
+            },
+            // 提示线的设置
+            labelLine:{
+                show:false
+            },
+            // 每个圆的部分的占比数据
+            data:[
+                
+                    {value:335,name:"企业"},
+                    {value:310,name:"大楼"},
+                    {value:234,name:"电子商务"},
+                    {value:135,name:"物流速递"},
+                    {value:666,name:"饭店"},
+                    {value:35,name:"美容店"},
+                
+            ]
+        }
+    ]
+}
+myChart.setOption(option)
+</script>
+</html>

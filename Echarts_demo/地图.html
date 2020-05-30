@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>地图</title>
+    <script src="Js/echarts.min.js"> </script>
+</head>
+<body>
+    <div id ="main" style ="width:600px;height:400px"></div>
+</body>
+<script>
+var myChart = echarts.init(document.getElementById("main"))
+option={
+    title:{
+        text:"地图",
+        left:"right"
+    },
+    legend:{
+        data:["降水量"],
+        top:"bottom",
+        left:"right",
+        orient:"vertical"
+    },
+    tooltip:{
+        trigger:"item"
+    },
+    // 代表的是子语，类似于说明
+    dataRange:{
+        min:100,
+        max:1000,
+        left:"left",
+        top:"bottom",
+        text:["降水多","降水少"],
+        calculable:true
+    },
+    series:[
+        {
+            name:"降水量",
+            type:"map",
+            mapType:"china",
+            mapValueCalculation:"sum",
+            roam:false,//是否开启滚动和漫游
+            itemStyle:{
+                normal:{
+                    label:{
+                        show:true
+                    }
+                }
+            },
+            data:[
+                {
+                    name:"北京",
+                    value:500
+                },
+                {
+                    name:"保定",
+                    value:300
+                },
+                {
+                    name:"新疆",
+                    value:100
+                },
+                {
+                    name:"天津",
+                    value:800
+                },
+                {
+                    name:"山东",
+                    value:900
+                },
+                {
+                    name:"上海",
+                    value:500
+                },
+                {
+                    name:"河南",
+                    value:600
+                },
+                {
+                    name:"海南",
+                    value:1000
+                },
+                {
+                    name:"内蒙古",
+                    value:400
+                },
+            ]
+        }
+    ]
+}
+myChart.setOption(option)
+
+</script>
+</html>
